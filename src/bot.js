@@ -65,20 +65,17 @@ Join us to:
 4) Discuss anything
 https://discord.com/invite/k77v9BnDcB
 `;
-
 const tweetDiscordLink = () => {
   const tweet = `${SHARE_DISCORD_CHANNEL_LINK}`;
   TwitterBot.post('statuses/update', { status: tweet }, () => {
     console.log('SUCCESS: Discord Channel Link Sent');
   });
 };
-
 // Use cron-job to schedule Discord Channel Promotion
 const rule = new schedule.RecurrenceRule();
 rule.dayOfWeek = [0, new schedule.Range(1, 6)];
 rule.hour = 11;
 rule.minute = 59;
-
 schedule.scheduleJob(rule, () => {
   // eslint-disable-next-line no-console
   console.log('Cron Job runs successfully');
